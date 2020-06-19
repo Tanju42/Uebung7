@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class Geometry {
 
-    private boolean debug = false;
-
     Scanner kbdInput = new Scanner(System.in);
     public static void main(String[] args) {
         Geometry geoManager = new Geometry();
@@ -20,10 +18,6 @@ public class Geometry {
             System.out.print("Art: ");
             art = kbdInput.next();
         }
-        if (debug) {
-            System.out.println("## Art: "+art);
-        }
-
         switch(art) {
             case "q":
                 System.out.println("> Exiting...");
@@ -59,22 +53,16 @@ public class Geometry {
                 System.out.println(" ");
                 Triangle ad = new Triangle(point1, point2, point3);
                 ad.getArea();
-                return;
-
         }
     }
 
     private Point readPoint() {
-        double x = 0.00;
-        double y = 0.00;
-        double z = 0.00;
         System.out.println("Input point");
-        System.out.print("X-coordinate: ");
-        x = kbdInput.nextDouble();
-        System.out.print("Y-coordinate: ");
-        y = kbdInput.nextDouble();
-        System.out.print("Z-coordinate: ");
-        z = kbdInput.nextDouble();
-        return new Point(x, y, z);
+        return new Point(getCoordinate("X"), getCoordinate("Y"), getCoordinate("Z"));
+    }
+
+    private double getCoordinate(String coorName) {
+        System.out.print(coorName+"-coordinate: ");
+        return kbdInput.nextDouble();
     }
 }
